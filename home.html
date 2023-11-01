@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <!-- Link to Bootstrap CSS from a CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Link to your external CSS file for custom styles -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="dropdown">
+        <a
+          class="navbar-brand dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Twisted
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- Dropdown menu items -->
+          <a class="dropdown-item" href="#">Home</a>
+          <a class="dropdown-item" href="#">Community</a>
+          <a class="dropdown-item" href="#">Saved Stories</a>
+          <a class="dropdown-item" href="#">Inbox</a>
+          <a class="dropdown-item" href="#">Drafts</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="login.html">Log Out</a>
+        </div>
+      </div>
+      <!-- Notification and Profile Icons -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-bell"></i>
+            <!-- Bell icon for notifications -->
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user"></i>
+            <!-- User icon for profile -->
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-primary" onclick="navigateToPostPage()">
+            Create Post
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="container mt-3">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="login-container">
+            <h2 class="h3 font-weight-normal text-center">
+              <img
+                class="mb-4"
+                src="logo.png"
+                alt="Twisted Logo"
+                width="375"
+                height="100"
+              />
+            </h2>
+            <!-- Your content for the home page goes here -->
+
+            <!-- Section for Recommended Posts -->
+            <section>
+              <h3>Posts You Might Like</h3>
+              <div class="card">
+                <div class="card-body">
+                  <!-- Post Title -->
+                  <h5 class="card-title">The Forgotten Note</h5>
+                  <!-- Author's Name -->
+                  <p class="card-text">Author: Real Person</p>
+                  <!-- Story Content -->
+                  <p class="card-text">
+                    Once upon a time in a quaint little ...
+                  </p>
+                </div>
+              </div>
+              <!-- Add more recommended posts as needed -->
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Include Bootstrap JS and jQuery if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Font Awesome for icons -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Include your custom JavaScript if needed -->
+    <script src="script.js"></script>
+    <script>
+      // JavaScript function to navigate to the post.html page
+      function navigateToPostPage() {
+        window.location.href = "post.html";
+      }
+    </script>
+  </body>
+</html>

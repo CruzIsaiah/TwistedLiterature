@@ -1,0 +1,81 @@
+/* Apply styles to the entire page */
+body {
+  margin: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Center the container on the page */
+.center-container {
+  text-align: center;
+}
+
+/* Style the login container */
+.login-container {
+  width: 400px; /* Adjust the width as needed */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-container label {
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Add pointer cursor to the button */
+}
+
+.login-container a {
+  text-decoration: none;
+  color: #007bff; /* Change link color to blue */
+}
+
+/* Style the social login buttons */
+.social-login {
+  text-align: center;
+  margin-top: 20px; /* Add some spacing between the form and social buttons */
+}
+
+.social-login a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Change button background color */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none; /* Remove underlines from links */
+}
+
+/* Add this to your style.css or a separate CSS file */
+.story-content.collapsed {
+  max-height: 150px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
