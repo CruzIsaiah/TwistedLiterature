@@ -9,16 +9,20 @@ const ReadPosts = (props) => {
   }, [props]);
 
   return (
-    <div className="ReadPosts">
+    <div
+      className="ReadPosts"
+      style={{ display: "flex", flexDirection: "column" }}
+    >
       {posts && posts.length > 0 ? (
         posts.map((post) => (
-          <Card
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            author={post.author}
-            description={post.description}
-          />
+          <div key={post.id} style={{ marginBottom: "20px" }}>
+            <Card
+              id={post.id}
+              title={post.title}
+              author={post.author}
+              description={post.description}
+            />
+          </div>
         ))
       ) : (
         <h2>{"No Challenges Yet 😞"}</h2>

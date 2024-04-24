@@ -1,7 +1,5 @@
 .ReadPosts {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  gap: 30px; /* Add some gap between each post */
 }
-
