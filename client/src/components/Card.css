@@ -4,7 +4,7 @@
   border-radius: 20px;
   padding: 20px 10px; /* Adjust padding as needed */
   margin-bottom: 25px;
-  width: 60%; /* Adjust the width as needed */
+  width: 55%; /* Adjust the width as needed */
   text-align: center;
   margin-left: auto;
   margin-right: auto; /* Center the card horizontally */
@@ -40,4 +40,36 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+/* Card.css */
+
+.Card {
+  /* Your existing styles for the card */
+}
+
+/* Add styles for the comments */
+.comments {
+  margin-top: 20px;
+}
+
+.comments h3 {
+  margin-bottom: 10px;
+}
+
+/* Style for each individual comment */
+.comment {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment .author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment .content {
+  color: #333;
 }

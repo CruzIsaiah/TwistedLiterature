@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const App = () => {
   const descr =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+    "Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi faoisdhfoaisdhnfoi Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi ahndfoiuah nsdpiu fhnapsd fpodhfpiu consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
   const posts = [
     {

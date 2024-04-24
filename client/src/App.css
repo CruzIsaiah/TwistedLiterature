@@ -67,3 +67,19 @@ button:hover {
   height: 100%; /* Make sure the image fills the container */
   border-radius: 50%; /* Ensure the image is circular */
 }
+
+.Comment {
+  background-color: #0058b1; /* Light gray background */
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.Comment .content {
+  color: #343a40; /* Dark text color */
+}
+
+.Comment .timestamp {
+  font-size: 12px;
+  color: #6c757d; /* Gray text color */
+}

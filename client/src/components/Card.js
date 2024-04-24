@@ -5,14 +5,9 @@ import { Link } from "react-router-dom";
 import Comment from "../components/Comment";
 
 const Card = (props) => {
-  const [likeCount, setLikeCount] = useState(0);
   const [upvoteCount, setUpvoteCount] = useState(0);
   const [downvoteCount, setDownvoteCount] = useState(0);
   const [comments, setComments] = useState([]);
-
-  const handleLike = () => {
-    setLikeCount((count) => count + 1);
-  };
 
   const handleUpvote = () => {
     setUpvoteCount((count) => count + 1);
@@ -60,7 +55,6 @@ const Card = (props) => {
             /* Handle form submission */
           }}
         >
-          <input type="text" placeholder="Your name" />
           <textarea placeholder="Your comment"></textarea>
           <button type="submit">Add Comment</button>
         </form>
