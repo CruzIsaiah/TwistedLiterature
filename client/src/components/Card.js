@@ -6,20 +6,18 @@ import Comment from "../components/Comment";
 
 const Card = (props) => {
   const [upvoteCount, setUpvoteCount] = useState(0);
-  const [downvoteCount, setDownvoteCount] = useState(0);
   const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   const handleUpvote = () => {
     setUpvoteCount((count) => count + 1);
   };
 
-  const handleDownvote = () => {
-    setDownvoteCount((count) => count + 1);
-  };
-
-  // Function to add a new comment
-  const addComment = (newComment) => {
-    setComments([...comments, newComment]);
+  const addComment = () => {
+    if (newComment.trim() !== "") {
+      setComments([...comments, { author: "Anonymous", content: newComment }]);
+      setNewComment("");
+    }
   };
 
   return (
@@ -34,14 +32,9 @@ const Card = (props) => {
         <button className="voteButton" onClick={handleUpvote}>
           Upvote 👍🏻: {upvoteCount}
         </button>
-        <button className="voteButton" onClick={handleDownvote}>
-          Downvote 👎🏻: {downvoteCount}
-        </button>
       </div>
-      {/* Comment section */}
-      <div className="comments">
+      <div className="comments-container">
         <h3>Comments</h3>
-        {/* Render existing comments */}
         {comments.map((comment, index) => (
           <Comment
             key={index}
@@ -49,13 +42,18 @@ const Card = (props) => {
             content={comment.content}
           />
         ))}
-        {/* Add new comment form */}
         <form
           onSubmit={(e) => {
-            /* Handle form submission */
+            e.preventDefault();
+            addComment();
           }}
         >
-          <textarea placeholder="Your comment"></textarea>
+          <textarea
+            className="comment-input"
+            placeholder="Your comment"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+          ></textarea>
           <button type="submit">Add Comment</button>
         </form>
       </div>

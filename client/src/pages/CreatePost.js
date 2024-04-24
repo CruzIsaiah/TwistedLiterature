@@ -1,61 +1,58 @@
-import React, { useState } from "react"; // Importing React and useState from 'react'
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { db } from "../config/firebase"; // Import db from your firebase configuration file
+import { collection, addDoc } from "firebase/firestore";
 
 const CreatePost = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState({
-    id: null,
-    title: "",
-    author: "",
-    description: "",
-  });
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPost((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+
+    try {
+      await addDoc(collection(db, "posts"), {
+        title,
+        body,
+        // Add any additional fields if needed
+      });
+
+      // Reset form fields after successful submission
+      setTitle("");
+      setBody("");
+    } catch (error) {
+      console.error("Error adding post:", error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label> <br />
         <input
           type="text"
           id="title"
-          name="title"
-          value={post.title}
-          onChange={handleChange}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <br />
         <br />
-        <label htmlFor="author">Author</label>
-        <br />
-        <input
-          type="text"
-          id="author"
-          name="author"
-          value={post.author}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <label htmlFor="description">Description</label>
-        <br />
+        <label htmlFor="body">Body</label> <br />
         <textarea
-          rows="15"
-          cols="50"
-          id="description"
-          name="description" // Ensure name matches the state property name
-          value={post.description}
-          onChange={handleChange}
+          rows="5"
+          id="body"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          required
         ></textarea>
         <br />
-        <input type="submit" value="Submit" />
+        <button type="submit" disabled={submitting}>
+          {submitting ? "Submitting..." : "Submit"}
+        </button>
       </form>
     </div>
   );

@@ -1,12 +1,10 @@
-// Comment.js
-
 import React from "react";
+import "./Comment.css";
 
-const Comment = ({ author, content }) => {
+const Comment = (props) => {
   return (
     <div className="comment">
-      <p className="author">{author}</p>
-      <p className="content">{content}</p>
+      <p><strong>{props.author}: </strong>{props.content}</p>
     </div>
   );
 };
