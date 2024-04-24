@@ -32,9 +32,10 @@ const ReadPosts = () => {
 <Card
   id={post.id}
   title={post.title}
-  author={post.author}
-  description={post.body} // Ensure the description field is correctly passed
+  author={post.authorId} // Assuming the author field is named "authorId"
+  description={post.body}
 />
+
 
 
           </div>
