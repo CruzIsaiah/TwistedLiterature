@@ -1,12 +1,12 @@
 .App {
-  font-family:Avenir, "Century Gothic", sans-serif;
-  font-weight:100; 
-  font-style:normal;
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-weight: 100;
+  font-style: normal;
   font-size: calc(10px + 2vmin);
   color: white;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.962);
-  padding:20px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,9 +14,9 @@
   justify-content: center;
 }
 
-.header{
+.header {
   width: 100%;
-  color:white;
+  color: white;
   text-align: center;
 }
 
@@ -40,10 +40,30 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  color:white;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+}
+
+.circleButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.circleButton img {
+  width: 100%; /* Make sure the image fills the container */
+  height: 100%; /* Make sure the image fills the container */
+  border-radius: 50%; /* Ensure the image is circular */
 }
