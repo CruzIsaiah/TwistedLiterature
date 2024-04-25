@@ -1,42 +1,18 @@
-import "./App.css";
 import React from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, useLocation } from "react-router-dom";
 import ReadPosts from "./pages/ReadPosts";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import UserProfile from "./pages/UserProfile";
+import Login from "./pages/Login"; // Import the Login component
 import { Link } from "react-router-dom";
+import "./App.css"
 
 const App = () => {
-  const descr =
-    "Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi faoisdhfoaisdhnfoi Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi ahndfoiuah nsdpiu fhnapsd fpodhfpiu consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  const location = useLocation();
+  const hideHeader = location.pathname === "/login"; // Check if the current route is the login page
 
-  const posts = [
-    // {
-    //   id: "1",
-    //   title: "Cartwheel in Chelsea 🤸🏽‍♀️",
-    //   author: "Harvey Milian",
-    //   description: descr,
-    // },
-    // {
-    //   id: "2",
-    //   title: "Love Lock in Paris 🔒",
-    //   author: "Beauford Delaney",
-    //   description: descr,
-    // },
-    // {
-    //   id: "3",
-    //   title: "Wear Pink on Fridays 🎀",
-    //   author: "Onika Tonya",
-    //   description: descr,
-    // },
-    // {
-    //   id: "4",
-    //   title: "Adopt a Dog 🐶",
-    //   author: "Denise Michelle",
-    //   description: descr,
-    // },
-  ];
+  const posts = [];
 
   // Sets up routes
   let element = useRoutes([
@@ -56,26 +32,35 @@ const App = () => {
       path: "/profile",
       element: <UserProfile />,
     },
+    {
+      path: "/login",
+      element: <Login />,
+    },
   ]);
 
   return (
     <div className="App">
-      <div className="header">
-        <h1>Twisted Lit</h1>
-        <Link to="/">
-          <button className="headerBtn"> Feed </button>
-        </Link>
-        <Link to="/new">
-          <button className="headerBtn"> Create Post </button>
-        </Link>
-      </div>
+      {!hideHeader && (
+        <div className="header">
+          <div className="logo"> {/* Change class name to "logo" */}
+            <img src="boldredlogo.png" alt="Twisted Lit" /> {/* Replaced text with image */}
+          </div>
+          <Link to="/">
+            <button className="headerBtn"> Feed </button>
+          </Link>
+          <Link to="/new">
+            <button className="headerBtn"> Create Post </button>
+          </Link>
+        </div>
+      )}
       {element}
-      {/* Circle button */}
-      <div className="circleButton">
-        <Link to="/profile">
-          <img src="profile.png" alt="Profile" />
-        </Link>
-      </div>
+      {!hideHeader && ( // Only render the circleButton when not on the login page
+        <div className="circleButton">
+          <Link to="/profile">
+            <img src="profile.png" alt="Profile" />
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

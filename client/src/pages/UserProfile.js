@@ -1,4 +1,5 @@
 import React from "react";
+import "./UserProfile.css"
 
 const UserProfile = ({ username, bio, profilePicture, accountCreatedDate }) => {
   return (

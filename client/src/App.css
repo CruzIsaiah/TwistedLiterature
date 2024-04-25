@@ -68,3 +68,7 @@ button {
   border-radius: 50%; /* Ensure the image is circular */
 }
 
+.logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+}

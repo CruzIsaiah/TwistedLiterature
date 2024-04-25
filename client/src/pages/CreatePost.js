@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { db } from "../config/firebase"; // Import db from your firebase configuration file
-import { collection, addDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import { db } from "../config/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import "./CreatePost.css"
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ const CreatePost = () => {
       await addDoc(collection(db, "posts"), {
         title,
         body,
-        // Add any additional fields if needed
+        datePosted: serverTimestamp() // Add server timestamp to datePosted
       });
 
       // Reset form fields after successful submission
@@ -59,4 +60,3 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-
