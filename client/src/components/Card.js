@@ -20,6 +20,17 @@ const Card = (props) => {
     }
   };
 
+  // Function to format the timestamp into a human-readable date and time
+  const formattedDate = (date) => {
+    if (date && date.seconds) {
+      const postDate = new Date(date.seconds * 1000);
+      const dateString = postDate.toLocaleDateString();
+      const timeString = postDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      return `${dateString} ${timeString}`;
+    }
+    return "";
+  };
+
   return (
     <div className="Card">
       <Link to={"edit/" + props.id}>
@@ -28,9 +39,10 @@ const Card = (props) => {
       <h2 className="title">{props.title}</h2>
       <h3 className="author">{"by " + props.author}</h3>
       <p className="description">{props.description}</p>
+      <p className="datePosted">{formattedDate(props.date)}</p>
       <div>
         <button className="voteButton" onClick={handleUpvote}>
-          Upvote 👍🏻: {upvoteCount}
+         ⬆️ {upvoteCount}
         </button>
       </div>
       <div className="comments-container">

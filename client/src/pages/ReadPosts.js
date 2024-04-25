@@ -34,6 +34,8 @@ const ReadPosts = () => {
   title={post.title}
   author={post.authorId} // Assuming the author field is named "authorId"
   description={post.body}
+  date={post.datePosted}
+  
 />
 
 

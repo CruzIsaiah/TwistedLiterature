@@ -12,30 +12,30 @@ const App = () => {
     "Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi faoisdhfoaisdhnfoi Lorem ipsum dolor sit amet,dfasdfadsfasidf hasdilfhalidsjfhaidh faoisdhfoaisdhnfoi ahndfoiuah nsdpiu fhnapsd fpodhfpiu consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
 
   const posts = [
-    {
-      id: "1",
-      title: "Cartwheel in Chelsea 🤸🏽‍♀️",
-      author: "Harvey Milian",
-      description: descr,
-    },
-    {
-      id: "2",
-      title: "Love Lock in Paris 🔒",
-      author: "Beauford Delaney",
-      description: descr,
-    },
-    {
-      id: "3",
-      title: "Wear Pink on Fridays 🎀",
-      author: "Onika Tonya",
-      description: descr,
-    },
-    {
-      id: "4",
-      title: "Adopt a Dog 🐶",
-      author: "Denise Michelle",
-      description: descr,
-    },
+    // {
+    //   id: "1",
+    //   title: "Cartwheel in Chelsea 🤸🏽‍♀️",
+    //   author: "Harvey Milian",
+    //   description: descr,
+    // },
+    // {
+    //   id: "2",
+    //   title: "Love Lock in Paris 🔒",
+    //   author: "Beauford Delaney",
+    //   description: descr,
+    // },
+    // {
+    //   id: "3",
+    //   title: "Wear Pink on Fridays 🎀",
+    //   author: "Onika Tonya",
+    //   description: descr,
+    // },
+    // {
+    //   id: "4",
+    //   title: "Adopt a Dog 🐶",
+    //   author: "Denise Michelle",
+    //   description: descr,
+    // },
   ];
 
   // Sets up routes

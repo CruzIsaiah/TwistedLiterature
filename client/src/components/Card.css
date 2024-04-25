@@ -48,3 +48,10 @@
 .comment {
   font-size: 14px; /* Adjust the font size to your preference */
 }
+
+.datePosted {
+  font-size: 12px; /* Set font size to be smaller */
+  position: absolute;
+  top: 10px; /* Adjust top position */
+  left: 10px; /* Adjust left position */
+}
