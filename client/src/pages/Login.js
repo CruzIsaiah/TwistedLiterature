@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+// Import useState and useRef
+import React, { useState, useRef } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../config/firebase'; // Assuming auth and db are your Firebase auth and Firestore database instances
-import { setDoc, doc } from 'firebase/firestore'; // Import setDoc and doc from the Firestore package
+import { auth, db } from '../config/firebase';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore'; // Import setDoc, doc, and serverTimestamp from the Firestore package
 import './Login.css';
 
 const Login = () => {
@@ -13,10 +14,10 @@ const Login = () => {
   const handleSignUp = async () => {
     try {
       // Create user with email and password
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       
       // Store user details in Firestore
-      await addUserToDatabase(email, username);
+      await addUserToDatabase(userCredential.user.uid, email, username);
 
       // You can add further logic here, such as redirecting the user to another page
     } catch (err) {
@@ -35,10 +36,12 @@ const Login = () => {
   };
 
   // Function to add user details to Firestore
-  const addUserToDatabase = async (email, username) => {
+  const addUserToDatabase = async (userId, email, username) => {
     try {
-      // Add user details to Firestore users collection
-      await setDoc(doc(db, 'users', email), { username });
+      // Get the current timestamp
+      const timestamp = serverTimestamp();
+      // Add user details to Firestore users collection along with the timestamp
+      await setDoc(doc(db, 'users', userId), { email, username, accountCreatedDate: timestamp });
     } catch (error) {
       console.error('Error adding user to database: ', error);
     }
@@ -58,6 +61,7 @@ const Login = () => {
             <input
               type="text"
               placeholder='User Name'
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -68,6 +72,7 @@ const Login = () => {
           <input
             type="email"
             placeholder='Email'
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -76,6 +81,7 @@ const Login = () => {
           <input
             type="password"
             placeholder='Password'
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
