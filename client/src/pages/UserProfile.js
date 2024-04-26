@@ -1,65 +1,49 @@
-import React, { useState } from "react";
-import { db, storage } from "../config/firebase"; // Import the Firebase storage instance
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import necessary storage functions
-import "./UserProfile.css";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../config/firebase"; 
 
-const UserProfile = ({ username, bio, profilePicture, accountCreatedDate }) => {
-  const [image, setImage] = useState(null); // State to store the uploaded image
+const UserProfile = () => {
+  const user = useAuth(); 
+  const [username, setUsername] = useState(""); 
 
-  // Function to handle file upload
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-  };
+  useEffect(() => {
+    const extractUsername = () => {
+      if (user) {
+        const email = user.email;
+        const atIndex = email.indexOf("@");
+        const extractedUsername = atIndex !== -1 ? email.substring(0, atIndex) : email;
+        setUsername(extractedUsername);
+      }
+    };
 
-  // Function to handle image upload
-  const handleImageUpload = async () => {
-    if (!image) return; // Return if no image is selected
+    extractUsername();
+  }, [user]);
 
-    try {
-      // Create a storage reference for the image
-      const storageRef = ref(storage, `profile_images/${username}/${image.name}`);
-
-      // Upload the image file to Firebase Storage
-      await uploadBytes(storageRef, image);
-
-      // Get the download URL of the uploaded image
-      const imageUrl = await getDownloadURL(storageRef);
-
-      // Here you can save the imageUrl to the user's profile in the database
-      // For simplicity, I'm logging the URL to the console
-      console.log("Image uploaded successfully. URL:", imageUrl);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  };
+  if (!user) {
+    return <div>No User Found...</div>;
+  }
 
   return (
-    <div className="UserProfile">
+    <div>
       <h1>User Profile</h1>
+      <div>
+        <h2>User ID:</h2>
+        <p>{user.uid}</p>
+      </div>
+      <div>
+        <h2>User Email:</h2>
+        <p>{user.email}</p>
+      </div>
       <div>
         <h2>Username:</h2>
         <p>{username}</p>
       </div>
       <div>
-        <h2>Bio:</h2>
-        <p>{bio}</p>
-      </div>
-      <div>
-        <h2>Profile Picture:</h2>
-        <img src={profilePicture} alt="Profile" />
-      </div>
-      <div>
-        <h2>Upload Profile Picture:</h2>
-        <input type="file" accept="image/*" onChange={handleFileUpload} />
-        <button onClick={handleImageUpload}>Upload</button>
-      </div>
-      <div>
         <h2>Account Created Date:</h2>
-        <p>{accountCreatedDate}</p>
+        <p>{user.metadata.creationTime}</p>
       </div>
     </div>
   );
 };
 
 export default UserProfile;
+

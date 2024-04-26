@@ -18,6 +18,9 @@
   width: 100%;
   color: white;
   text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .headerBtn {
@@ -44,9 +47,44 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-/* button:hover {
-  border-color: #646cff;
-} */
+
+/* Navbar styles */
+/* Navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background-color: #00000000; /* Set the background color of the navbar to black */
+  color: white;
+  padding: 20px;
+}
+
+.logo {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.content {
+  margin-left: 220px; /* Adjust this value to account for the width of the navbar */
+  padding: 20px;
+}
 
 .circleButton {
   position: fixed;
@@ -66,9 +104,4 @@ button {
   width: 100%; /* Make sure the image fills the container */
   height: 100%; /* Make sure the image fills the container */
   border-radius: 50%; /* Ensure the image is circular */
-}
-
-.logo {
-  width: 100px; /* Adjust the width as needed */
-  height: auto; /* Automatically adjust the height to maintain aspect ratio */
 }

@@ -4,17 +4,16 @@ import ReadPosts from "./pages/ReadPosts";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import UserProfile from "./pages/UserProfile";
-import Login from "./pages/Login"; // Import the Login component
+import Login from "./pages/Login";
 import { Link } from "react-router-dom";
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   const location = useLocation();
-  const hideHeader = location.pathname === "/login"; // Check if the current route is the login page
+  const hideHeader = location.pathname === "/login";
 
   const posts = [];
 
-  // Sets up routes
   let element = useRoutes([
     {
       path: "/",
@@ -41,26 +40,33 @@ const App = () => {
   return (
     <div className="App">
       {!hideHeader && (
-        <div className="header">
-          <div className="logo"> {/* Change class name to "logo" */}
-            <img src="boldredlogo.png" alt="Twisted Lit" /> {/* Replaced text with image */}
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li>
+              <Link to="/">Feed</Link>
+            </li>
+            <li>
+              <Link to="/new">Create Post</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+      <div className="content">
+      <div className="logo">
+        <img src="boldredlogo.png" alt="Twisted Lit" />
+        </div>
+        {!hideHeader && (
+          <div className="circleButton">
+            <Link to="/profile">
+              <img src="person.png" alt="Profile" />
+            </Link>
           </div>
-          <Link to="/">
-            <button className="headerBtn"> Feed </button>
-          </Link>
-          <Link to="/new">
-            <button className="headerBtn"> Create Post </button>
-          </Link>
-        </div>
-      )}
-      {element}
-      {!hideHeader && ( // Only render the circleButton when not on the login page
-        <div className="circleButton">
-          <Link to="/profile">
-            <img src="profile.png" alt="Profile" />
-          </Link>
-        </div>
-      )}
+        )}
+        {element}
+      </div>
     </div>
   );
 };
