@@ -61,12 +61,12 @@ const App = () => {
       )}
       <div className="content">
         <div className="logo">
-          <img src="boldredlogo.png" alt="Twisted Lit" />
+          <img src="/boldredlogo.png" alt="Twisted Lit" />
         </div>
         {!hideHeader && (
           <div className="circleButton">
             <Link to="/profile">
-              <img src="default.jpeg" alt="Profile" />
+              <img src="/default.jpeg" alt="Profile" />
             </Link>
           </div>
         )}
