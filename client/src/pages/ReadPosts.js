@@ -1,50 +1,77 @@
-import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../config/firebase"; // Import db directly from firebase.js
+import React, { useState, useEffect } from "react";
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+import { db } from "../config/firebase";
 import Card from "../components/Card";
 
 const ReadPosts = () => {
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPosts = async () => {
       try {
-        // Fetch posts from Firestore
-        const querySnapshot = await getDocs(collection(db, "posts"));
-        const tempPosts = [];
-        querySnapshot.forEach((doc) => {
-          tempPosts.push({ id: doc.id, ...doc.data() });
-        });
-        setPosts(tempPosts);
+        const postsCollection = collection(db, "posts");
+        let postsQuery = query(postsCollection, orderBy("datePosted", "desc")); // Sort by datePosted in descending order
+
+        // Apply search filter if searchTerm exists
+        if (searchTerm) {
+          const searchTermLower = searchTerm.toLowerCase();
+          postsQuery = query(
+            postsCollection,
+            where("title", ">=", searchTermLower),
+            where("title", "<=", searchTermLower + "\uf8ff"),
+            orderBy("title")
+          );
+        }
+
+        const postsSnapshot = await getDocs(postsQuery);
+        const fetchedPosts = postsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPosts(fetchedPosts);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchPosts();
+  }, [searchTerm]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   return (
-    <div className="ReadPosts" style={{ display: "flex", flexDirection: "column" }}>
-      {posts.length > 0 ? (
-        posts.map((post) => (
-          <div key={post.id} style={{ marginBottom: "20px" }}>
-<Card
-  id={post.id}
-  title={post.title}
-  author={post.authorId} // Assuming the author field is named "authorId"
-  description={post.body}
-  date={post.datePosted}
-  
-/>
+    <div>
+      <input
+        type="text"
+        placeholder="Search by title..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+        style={{
+          width: '600px',
+          height: '20px',
+          padding: '8px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          outline: 'none',
+          marginBottom: '50px' // Add margin bottom to create space
+        }}
+      />
 
-
-
-          </div>
-        ))
-      ) : (
-        <h2>No Posts Yet 😞</h2>
-      )}
+      {posts.map((post) => (
+        <Card
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          author={post.author}
+          description={post.description}
+          date={post.datePosted}
+          upvoteCount={post.upvotes}
+          commentCount={post.comments ? post.comments.length : 0} // Check if comments array exists before accessing length property
+        />
+      ))}
     </div>
   );
 };

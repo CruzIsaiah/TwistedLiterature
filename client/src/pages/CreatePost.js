@@ -7,20 +7,22 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [upvotes, setUpvotes] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setSubmitting(true);
-
+  
     try {
       const docRef = await addDoc(collection(db, "posts"), {
         title,
         body,
-        datePosted: serverTimestamp() // Add server timestamp to datePosted
+        datePosted: serverTimestamp(),
+        upvotes: 0, // Set the upvotes count to 0 when creating a new post
       });
-
+  
       console.log("Post added with ID: ", docRef.id); // Log the ID of the added post
-
+  
       // Reset form fields after successful submission
       setTitle("");
       setBody("");
@@ -30,6 +32,7 @@ const CreatePost = () => {
       setSubmitting(false);
     }
   };
+  
 
   return (
     <div>

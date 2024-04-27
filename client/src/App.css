@@ -54,13 +54,15 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
-  background-color: #00000000; /* Set the background color of the navbar to black */
+  width: 100px;
+  background-color: #00000000;
   color: white;
   padding: 20px;
 }
 
 .logo {
+  display: flex;
+  justify-content: center;
   margin: auto;
   width: 50%;
   padding: 10px;
@@ -82,7 +84,7 @@ button {
 }
 
 .content {
-  margin-left: 220px; /* Adjust this value to account for the width of the navbar */
+  margin-left: 220px; 
   padding: 20px;
 }
 
@@ -101,7 +103,19 @@ button {
 }
 
 .circleButton img {
-  width: 100%; /* Make sure the image fills the container */
-  height: 100%; /* Make sure the image fills the container */
-  border-radius: 50%; /* Ensure the image is circular */
+  width: 100%;
+  height: 100%; 
+  border-radius: 50%; 
+}
+
+.search-bar {
+  width: 200px; /* Adjust the width as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: #aaa;
 }
