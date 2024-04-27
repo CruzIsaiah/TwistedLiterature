@@ -8,7 +8,8 @@ const EditPost = () => {
   const [post, setPost] = useState({
     id: null,
     title: "",
-    description: "",
+    body: "",
+    datePosted: null,
   });
 
   // Fetch post data based on ID from Firestore
@@ -21,7 +22,8 @@ const EditPost = () => {
           setPost({
             id: postDoc.id,
             title: postData.title,
-            description: postData.description,
+            body: postData.body,
+            datePosted: postData.datePosted,
           });
         } else {
           console.log("No such document!");
@@ -48,7 +50,8 @@ const EditPost = () => {
       const postRef = doc(db, "posts", id);
       await updateDoc(postRef, {
         title: post.title,
-        description: post.description,
+        body: post.body,
+        datePosted: post.datePosted,
       });
       console.log("Post updated successfully!");
     } catch (error) {
@@ -81,17 +84,15 @@ const EditPost = () => {
         />
         <br />
         <br />
-        <br />
-        <label htmlFor="description">Description</label> <br />
+        <label htmlFor="body">Body</label> <br />
         <textarea
           rows="15"
           cols="50"
-          id="description"
-          name="description"
-          value={post.description}
+          id="body"
+          name="body"
+          value={post.body}
           onChange={handleChange}
         ></textarea>
-        <br />
         <input type="submit" value="Submit" />
         <button className="deleteButton" onClick={handleDelete}>
           Delete

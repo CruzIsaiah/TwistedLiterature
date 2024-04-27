@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../config/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import "./CreatePost.css"
+import "./CreatePost.css";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -13,11 +13,13 @@ const CreatePost = () => {
     setSubmitting(true);
 
     try {
-      await addDoc(collection(db, "posts"), {
+      const docRef = await addDoc(collection(db, "posts"), {
         title,
         body,
         datePosted: serverTimestamp() // Add server timestamp to datePosted
       });
+
+      console.log("Post added with ID: ", docRef.id); // Log the ID of the added post
 
       // Reset form fields after successful submission
       setTitle("");

@@ -4,7 +4,7 @@
   border-radius: 20px;
   padding: 20px 10px; /* Adjust padding as needed */
   margin-bottom: 25px;
-  width: 55%; /* Adjust the width as needed */
+  width: 600px; /* Adjust the width as needed */
   text-align: center;
   margin-left: auto;
   margin-right: auto; /* Center the card horizontally */
@@ -42,12 +42,18 @@
 
 /* Card.css */
 
-.comments-container {
-  margin-top: 20px;
+.comments {
+  font-size: 12px; /* Set font size to be smaller */
+  position: absolute;
+  bottom: 25px; /* Adjust top position */
+  left:11px;
 }
 
-.comment {
-  font-size: 14px; /* Adjust the font size to your preference */
+.upVotes {
+  font-size: 12px; /* Set font size to be smaller */
+  position: absolute;
+  bottom: 10px; /* Adjust top position */
+  left:11px;
 }
 
 .datePosted {
@@ -79,4 +85,14 @@
   width: 100%; /* Make sure the image fills the container */
   height: 100%; /* Make sure the image fills the container */
   border-radius: 50%; /* Ensure the image is circular */
+}
+
+.title {
+  cursor: pointer; 
+  color: red; 
+  text-decoration: none; 
+}
+
+.title:hover {
+  text-decoration: none;
 }

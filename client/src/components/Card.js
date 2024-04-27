@@ -6,19 +6,8 @@ import Comment from "../components/Comment";
 
 const Card = (props) => {
   const [upvoteCount, setUpvoteCount] = useState(0);
-  const [comments, setComments] = useState([]);
+  const [commentCount, setCommentCount] = useState(0);
   const [newComment, setNewComment] = useState("");
-
-  const handleUpvote = () => {
-    setUpvoteCount((count) => count + 1);
-  };
-
-  const addComment = () => {
-    if (newComment.trim() !== "") {
-      setComments([...comments, { author: "Anonymous", content: newComment }]);
-      setNewComment("");
-    }
-  };
 
   // Function to format the timestamp into a human-readable date and time
   const formattedDate = (date) => {
@@ -36,39 +25,12 @@ const Card = (props) => {
       <Link to={"edit/" + props.id}>
         <img className="moreButton" alt="edit button" src={more} />
       </Link>
-      <h2 className="title">{props.title}</h2>
-      <h3 className="author">{"by " + props.author}</h3>
-      <p className="description">{props.description}</p>
+      <Link to={`viewPost/${props.id}`} style={{ textDecoration: 'none' }}>
+        <h2 className="title">{props.title}</h2>
+      </Link>
       <p className="datePosted">{formattedDate(props.date)}</p>
-      <div>
-        <button className="voteButton" onClick={handleUpvote}>
-         ⬆️ {upvoteCount}
-        </button>
-      </div>
-      <div className="comments-container">
-        <h3>Comments</h3>
-        {comments.map((comment, index) => (
-          <Comment
-            key={index}
-            author={comment.author}
-            content={comment.content}
-          />
-        ))}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addComment();
-          }}
-        >
-          <textarea
-            className="comment-input"
-            placeholder="Your comment"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-          ></textarea>
-          <button type="submit">Add Comment</button>
-        </form>
-      </div>
+      <p className="upVotes"> {upvoteCount} Upvotes</p>
+      <p className="comments"> {commentCount} Comments</p>
     </div>
   );
 };
