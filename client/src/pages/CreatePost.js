@@ -21,7 +21,7 @@ const CreatePost = () => {
         upvotes: 0, // Set the upvotes count to 0 when creating a new post
       });
   
-      console.log("Post added with ID: ", docRef.id); // Log the ID of the added post
+      console.log("Post added with ID: ", docRef.id); 
   
       // Reset form fields after successful submission
       setTitle("");
@@ -43,7 +43,7 @@ const CreatePost = () => {
   id="title"
   value={title}
   onChange={(e) => setTitle(e.target.value)}
-  className="titleInput" // Add the className attribute
+  className="titleInput" 
   required
 />
 

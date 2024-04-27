@@ -1,4 +1,5 @@
 .Card {
+  background-color: rgba(57, 54, 54, 0.396);
   backdrop-filter: blur(2px);
   border: 1px solid rgba(153, 153, 153, 0.196);
   border-radius: 20px;
