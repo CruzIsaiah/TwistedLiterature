@@ -39,12 +39,14 @@ const CreatePost = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label> <br />
         <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+  type="text"
+  id="title"
+  value={title}
+  onChange={(e) => setTitle(e.target.value)}
+  className="titleInput" // Add the className attribute
+  required
+/>
+
         <br />
         <br />
         <label htmlFor="body">Body</label> <br />
